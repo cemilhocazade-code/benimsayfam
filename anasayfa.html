@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Almanca Öğreniyorum</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #ffffff);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+      color: #00796b;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 40px;
+      color: #555;
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .card h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #00695c;
+    }
+
+    .card p {
+      font-size: 16px;
+      color: #666;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Almanca Öğreniyorum</h1>
+  <p>Alıştırmalar, çeviri kartları ve daha fazlası seni bekliyor!</p>
+
+  <div class="card-container">
+    <a href="arasayfa.html" class="card">
+      <h2>🗣️ Diyalog Kartları</h2>
+      <p>Çift taraflı kartlarla Almanca diyalogları öğren</p>
+    </a>
+    
+    <!-- Gelecekteki ek içerikler -->
+    <a href="#" class="card" style="opacity: 0.5; pointer-events: none;">
+      <h2>📘 Kelime Kartları (Yakında)</h2>
+      <p>Temel Almanca kelimeleri ezberle</p>
+    </a>
+
+    <a href="#" class="card" style="opacity: 0.5; pointer-events: none;">
+      <h2>🎧 Dinleme Alıştırmaları (Yakında)</h2>
+      <p>Gerçek konuşmalarla anlamanı geliştir</p>
+    </a>
+  </div>
+
+</body>
+</html>

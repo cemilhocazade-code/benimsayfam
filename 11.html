@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Google Doküman Görüntüleyici</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9fdfd;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .header {
+      background-color: #00796b;
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .home-button {
+      background-color: #ffffff;
+      color: #00796b;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .home-button:hover {
+      background-color: #e0f2f1;
+      transform: translateY(-2px);
+    }
+
+    .content {
+      flex: 1;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <a href="arasayfa.html" class="home-button">🏠 Ana Sayfa</a>
+  </div>
+
+  <div class="content">
+    <iframe src="https://docs.google.com/document/d/1FQjKxeWtJGSTNFLMMGol2lpUTOs6IfZqEAx07yJx68M/preview"></iframe>
+  </div>
+
+</body>
+</html>

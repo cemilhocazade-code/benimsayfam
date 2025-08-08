@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Almanca Sesli Kartlar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #eaf6f6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      width: 100%;
+      background-color: #00796b;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    .nav-buttons {
+      margin-top: 10px;
+    }
+
+    .nav-buttons a {
+      text-decoration: none;
+      color: white;
+      background-color: #009688;
+      padding: 10px 18px;
+      border-radius: 8px;
+      margin: 0 10px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .nav-buttons a:hover {
+      background-color: #004d40;
+      transform: translateY(-2px);
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 20px;
+    }
+
+    .card {
+      width: 400px;
+      height: 200px;
+      perspective: 1000px;
+      margin-bottom: 30px;
+      cursor: pointer;
+    }
+
+    .inner-card {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .flipped {
+      transform: rotateY(180deg);
+    }
+
+    .front, .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      padding: 20px;
+      box-sizing: border-box;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .back {
+      transform: rotateY(180deg);
+      background-color: #d7f6f9;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      background-color: #009688;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #004d40;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 450px) {
+      .card {
+        width: 90%;
+        height: 180px;
+      }
+
+      .front, .back {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🗣️ Almanca Sesli Kartlar</h1>
+  <div class="nav-buttons">
+    <a href="anasayfa.html">🏠 Ana Sayfa</a>
+    <a href="arasayfa.html">📋 Alıştırmalar</a>
+  </div>
+</header>
+
+<main>
+  <div class="card" onclick="flipCard()">
+    <div class="inner-card" id="cardInner">
+      <div class="front" id="frontText"></div>
+      <div class="back" id="backText"></div>
+    </div>
+  </div>
+
+  <button onclick="nextCard()">Sonraki</button>
+</main>
+
+<script>
+  const sentences = [
+   { tr: "Hasta: Günaydın doktor bey, dünden beri midem bulanıyor ve birkaç kez kustum.", de: "Patient: Guten Tag, Herr Doktor. Mir ist seit gestern übel und ich habe ein paar Mal erbrochen." },
+    { tr: "Doktor: Anladım. Ne zaman başladı, tam olarak hatırlıyor musunuz?", de: "Arzt: Verstehe. Wann genau hat es angefangen? Können Sie sich erinnern?" },
+    { tr: "Hasta: Dün öğleden sonra başladı, akşama doğru daha da kötüleşti.", de: "Patient: Gestern Nachmittag, und gegen Abend wurde es schlimmer." },
+    { tr: "Doktor: Başka şikayetiniz var mı? Karın ağrınız veya ishaliniz oldu mu?", de: "Arzt: Haben Sie noch andere Beschwerden? Bauchschmerzen oder Durchfall?" },
+    { tr: "Hasta: Hafif bir karın ağrım var ama ishal olmadım.", de: "Patient: Ich habe leichte Bauchschmerzen, aber keinen Durchfall." },
+    { tr: "Doktor: Ateşiniz çıktı mı? Halsizlik hissediyor musunuz?", de: "Arzt: Hatten Sie Fieber? Fühlen Sie sich schlapp?" },
+    { tr: "Hasta: Evet, hafif ateşim var ve kendimi çok yorgun hissediyorum.", de: "Patient: Ja, ich habe leichtes Fieber und fühle mich total erschöpft." },
+    { tr: "Doktor: Son 24 saat içinde ne yediniz? Bozulmuş bir şey yemiş olabileceğinizi düşünüyor musunuz?", de: "Arzt: Was haben Sie in den letzten 24 Stunden gegessen? Könnte es sein, dass Sie etwas Verdorbenes gegessen haben?" },
+    { tr: "Hasta: Akşam dışarıda yemek yedim ama tam olarak neyden kaynaklandığını bilmiyorum.", de: "Patient: Ich habe gestern Abend auswärts gegessen, aber ich weiß nicht genau, woran es liegt." },
+    { tr: "Doktor: Anladım. Şimdi sizi muayene edeceğim. Lütfen sedyeye uzanın...", de: "Arzt: Verstehe. Ich werde Sie jetzt untersuchen. Bitte legen Sie sich auf die Liege..." }
+  ];
+
+  let usedIndexes = [];
+
+  function getRandomIndex() {
+    if (usedIndexes.length === sentences.length) {
+      usedIndexes = [];
+    }
+
+    let index;
+    do {
+      index = Math.floor(Math.random() * sentences.length);
+    } while (usedIndexes.includes(index));
+
+    usedIndexes.push(index);
+    return index;
+  }
+
+  function speakGerman(text) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'de-DE';
+    window.speechSynthesis.speak(utterance);
+  }
+
+  function showCard(index) {
+    const front = document.getElementById("frontText");
+    const back = document.getElementById("backText");
+    const card = document.getElementById("cardInner");
+    card.classList.remove("flipped");
+
+    front.textContent = sentences[index].tr;
+    back.textContent = sentences[index].de;
+  }
+
+  function flipCard() {
+    const card = document.getElementById("cardInner");
+    card.classList.toggle("flipped");
+
+    if (card.classList.contains("flipped")) {
+      const back = document.getElementById("backText").textContent;
+      speakGerman(back);
+    }
+  }
+
+  function nextCard() {
+    const randomIndex = getRandomIndex();
+    showCard(randomIndex);
+  }
+
+  window.onload = () => {
+    nextCard();
+  };
+</script>
+
+</body>
+</html>
